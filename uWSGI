@@ -1,13 +1,34 @@
 ubuntu -> apt install build-essential python3-dev
 pacman -S uwsgi uwsgi-plugin-python 
 #uWSGI в виртуальное окружение venv
-pip install uwsgi
+
+pip install whell/uwsgi
+
+uwsgi --http 127.0.0.1:9090 --chdir ~/Code/workspace/mystudio/ --module mystudio.wsgi
+uwsgi --http 127.0.0.1:9090 --chdir ~/Code/workspace/mystudio/ --wsgi-file mystudio/wsgi.py
+
+uwsgi --socket /tmp/mystudio.sock
+      --chdir ~/Code/workspace/mystudio/
+      --module mystudio.wsgi 
+      --chmod-socket=666
 
 Запускаем uWSGI:
+uwsgi --socket /tmp/mystudio.so --wsgi-file foobar.py --chmod-socket=666
 uwsgi --http :8000 --wsgi-file test.py
-uwsgi --http :8000 --module mysite.wsgi - #Django
+
 ----- test.py -----
 def application(env, start_response):
     start_response('200 OK', [('Content-Type','text/html')])
     return [b"Hello World"]
 
+uwsgi --ini config/uwsgi.ini
+
+ps aux | grep nginx
+
+----- uwsgi.ini -----
+[uwsgi]
+master = true
+module = mystudio.wsgi:application
+chdir = /home/denis/Code/workspace/mystudio
+socket = /tmp/mystudio.sock
+chmod-socket = 666

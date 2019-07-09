@@ -1,0 +1,38 @@
+apt install nginx
+systemctl status/start/stop/restart/reload nginx
+ect/nginx/sites-available/mysite [config/nginx.conf] - папка и файл в моем проэкте
+sudo systemctl reload nginx
+
+
+/etc/nginx/uwsgi_params
+-------
+server {
+            listen       80;
+            server_name  localhost;
+
+            access_log  logs/localhost.access.log  main;
+
+            location / {
+                root /var/www/board/public;
+                index index.html index.htm index.php;
+            }
+       }
+-------
+upstream mystudio {
+    server unix:///tmp/mystudio.sock;
+}
+
+server {
+    listen 8000;
+    server_name localhost;
+
+    location / {
+        include /etc/nginx/uwsgi_params;
+        uwsgi_pass mystudio;
+    }
+}
+
+#заставить NGINX загружать настраиваемый файл конфигурации, создайте символическую ссылку
+sudo ln -s /home/denis/Code/workspace/mystudio/config/mystudio.conf /etc/nginx/sites-enabled/mystudio
+
+
