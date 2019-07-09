@@ -1,0 +1,21 @@
+sudo pacman -Syu
+sudo pacman -S docker
+sudo systemctl start docker
+#enable Docker on startup
+sudo systemctl enable docker
+#Check Docker version
+sudo docker version
+#Configure Docker user/run docker without root privileges
+sudo usermod -aG docker $USER
+
+docker ps -a #список всех контейнеров
+docker stop <CONTAINER ID>
+docker rm <CONTAINER ID>
+
+docker images - a #список всех образов
+docker rmi <IMAGE ID>
+#Удалить все данные Docker (очистить каталог):
+rm -R /var/lib/docker 
+
+sudo docker build -t django .
+sudo docker run -it -p 8000:8000 --rm --name my-app django
