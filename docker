@@ -1,0 +1,20 @@
+------ Dockerfile ------
+FROM python:3.7-alpine
+RUN apk add --no-cache bash
+WORKDIR /usr/src/app
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+CMD [ "./myscript" ]
+
+------ myscript ------
+#!/bin/sh
+cd messages/
+python3 manage.py makemigrations main
+python3 manage.py migrate
+python3 manage.py loaddata mydata.json
+python3 manage.py runserver 0.0.0.0:8000
+
+------ bash commands ------
+sudo docker build -t django .
+sudo docker run -it -p 8000:8000 --rm --name my-app django
