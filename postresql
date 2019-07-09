@@ -1,0 +1,19 @@
+#Linux Arch / Manjaro
+#Установка с помощью pacman
+sudo pacman -S postgresql
+sudo pacman -Si postgresql  - #Проверим успешность шага
+/var/lib/postgres/data
+#Если нет прав
+sudo chown -c -R postgres:postgres /var/lib/postgres
+#выполним вход под этим пользователем:
+sudo -i -u postgres
+#инициализируем хранилище:
+initdb -D '/var/lib/postgres/data'
+Logout - #Разлогиниваем пользователя postgres
+
+sudo systemctl start postgresql
+
+createuser -s -U postgres --interactive
+createdb <DatabaseName>
+#войти в терминал postgresql
+psql -d <DatabaseName>
