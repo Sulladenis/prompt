@@ -1,3 +1,5 @@
+ubuntu -> apt install build-essential python3-dev
+pacman -S uwsgi uwsgi-plugin-python 
 #uWSGI в виртуальное окружение venv
 pip install uwsgi
 
