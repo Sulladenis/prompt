@@ -1,0 +1,11 @@
+#uWSGI в виртуальное окружение venv
+pip install uwsgi
+
+Запускаем uWSGI:
+uwsgi --http :8000 --wsgi-file test.py
+uwsgi --http :8000 --module mysite.wsgi - #Django
+----- test.py -----
+def application(env, start_response):
+    start_response('200 OK', [('Content-Type','text/html')])
+    return [b"Hello World"]
+
