@@ -1,8 +1,13 @@
 apt install nginx
+
 systemctl status/start/stop/restart/reload nginx
 ect/nginx/sites-available/mysite [config/nginx.conf] - папка и файл в моем проэкте
 sudo systemctl reload nginx
 
+
+sudo yum install nginx
+sudo /etc/init.d/nginx status
+sudo /etc/init.d/nginx start
 
 /etc/nginx/uwsgi_params
 -------
