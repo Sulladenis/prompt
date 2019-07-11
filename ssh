@@ -1,0 +1,6 @@
+Host server
+     HostName 15.164.187.227
+     User ec2-user
+     IdentityFile LightsailDefaultKey-ap-northeast-2.pem
+
+sudo chmod 400 key
