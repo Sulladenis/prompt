@@ -4,3 +4,10 @@ Host server
      IdentityFile LightsailDefaultKey-ap-northeast-2.pem
 
 sudo chmod 400 key
+
+Чтобы посмотреть установленные ssh соединения, ss(8):
+
+$ ss -o state established '( dport = :ssh or sport = :ssh )'
+Чтобы посмотреть, кто залогинен, с какого ip и какую команду выполняют, w(1):
+
+$ w
