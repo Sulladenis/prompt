@@ -1,9 +1,8 @@
 apt install nginx
-
+sudo service nginx status
 systemctl status/start/stop/restart/reload nginx
 ect/nginx/sites-available/mysite [config/nginx.conf] - папка и файл в моем проэкте
 sudo systemctl reload nginx
-
 
 sudo yum install nginx
 sudo /etc/init.d/nginx status
@@ -39,5 +38,8 @@ server {
 
 #заставить NGINX загружать настраиваемый файл конфигурации, создайте символическую ссылку
 sudo ln -s /home/denis/Code/workspace/mystudio/config/mystudio.conf /etc/nginx/sites-enabled/mystudio
+
+sudo nginx -t проверит синтаксическую правильность конфигурации
+sudo service nginx configtest
 
 

@@ -17,3 +17,5 @@ createuser -s -U postgres --interactive
 createdb <DatabaseName>
 #войти в терминал postgresql
 psql -d <DatabaseName>
+
+https://djbook.ru/examples/77/
