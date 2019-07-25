@@ -3,6 +3,11 @@
 sudo pacman -S postgresql
 sudo pacman -Si postgresql  - #Проверим успешность шага
 /var/lib/postgres/data
+
+sudo apt install postgresql 
+sudo apt install postgresql-server-dev-10
+
+
 #Если нет прав
 sudo chown -c -R postgres:postgres /var/lib/postgres
 #выполним вход под этим пользователем:
@@ -17,5 +22,26 @@ createuser -s -U postgres --interactive
 createdb <DatabaseName>
 #войти в терминал postgresql
 psql -d <DatabaseName>
+
+\password postgres - пароль администратора БД
+
+create database django_db;
+sudo -u postgres psql -l - список баз данных.
+sudo -u postgres dropdb django_db
+sudo -u postgres createdb django_db
+
+После установки у вас появится пользователь postgres, добавьте его в группу sudo:
+usermod -a -G sudo postgres
+Установите пароль пользователю:
+passwd postgres
+
+Подключитесь от имени пользователя postgres:
+sudo -i -u postgres  [sudo -u postgres psql]
+(sudo -u, --user=user выполнить команду (или редактировать файл) от имени или ID указанного пользователя)
+Для подключения к СУБД PostgreSQL, наберите:
+psql
+Для выхода используйте команду:
+\q
+
 
 https://djbook.ru/examples/77/

@@ -3,3 +3,4 @@
 
 
 sudo apt autoclean
+sudo apt list --installed | grep python
