@@ -1,0 +1,26 @@
+
+docker-compose up (-d фоновый режим)
+docker-compose ps
+docker image ls
+docker inspect <tag or id>
+docker-compose stop - если ... up -d
+docker-compose down (--volumes удалить том данных)
+docker-compose exec web sh
+docker-compose up --build - пересоздавать контейнеры
+docker-compose run web django-admin startproject composeexample .
+sudo chown -R $USER:$USER . - изменить влвдельца
+
+docker stop $(docker ps -a -q) - остановить все контейнеры
+docker rm -f $(docker ps -a -q) - Принудительно удалить все Docker-контейнеры, включая запущенные контейнеры
+docker rmi -f $(docker images -q) - Принудительно удалить все Docker-образы
+docker cp foo.txt 72ca2488b353:/foo.txt - Скопировать файл с хоста в контейнер
+docker cp 72ca2488b353:/foo.txt foo.txt - Скопировать файл с Docker-контейнера на хост
+docker exec -it 72ca2488b353 bash -Войти по имени или ID контейнера и запустите интерактивную оболочку bash
+docker run -it ubuntu /bin/bash - Запустите контейнер из Docker-образа
+sudo docker run -it -p 8000:8000 --rm --name my-app django 
+	--rm удалить после завершения
+	--name имя контейнера
+	-p порт / -d фоновфй режим
+docker commit <tag or id> apache_snapshot <- новое имя контейнера
+
+
